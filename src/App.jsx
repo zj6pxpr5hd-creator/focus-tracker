@@ -1,24 +1,38 @@
 import './App.css'
 import Header from './components/Header.jsx'
 import Timer from './components/Timer.jsx'
-import SessionList from './components/SessionList.jsx'
-import { useState } from 'react'
+import SessionLog from './components/SessionLog.jsx'
+import { useEffect, useState } from 'react'
 
 
 function App() {
 
-  const [sessions, setSessions]  = useState([]); //array that saves Sessions time 
+  const [sessions, setSessions]  = useState(()  => { //array that saves Sessions time 
+    const saved = localStorage.getItem("sessions");  //checks if there are sessions saved
+    return  saved ? JSON.parse(saved) : [];          //if there are it stores them in session if there aren't sessions is set to empty
+  }); //sessions saved locally are stored inside the saved variable as JSON and than parsed to be saved in the sessions array
 
   const addSession = (time) =>  {               //function that updates the sessions array; this is just a tool to update sessions safely
     setSessions (prev => [...prev, time]);      //this function will be passed to timer that will use it to update the sessions array
   };
+
+  const clearSessions = () => {
+    setSessions([]);
+    localStorage.setItem("sessions", JSON.stringify([]));
+  }
+
+  useEffect(()=> {
+    localStorage.setItem("sessions", JSON.stringify(sessions));
+  }, [sessions]) //everytime sessions changes updates the localStorage
+
 
   return (
     <>
       <div className="app-container">
         <Header />
         <Timer addSession={addSession}/> {/*App lends addSessions to Timer so that it can add sessions to the array*/}
-        <SessionList />
+        <button className="clear-button" onClick={clearSessions}>Clear all</button>
+        <SessionLog sessions={sessions}/>
       </div>
     </>
   )

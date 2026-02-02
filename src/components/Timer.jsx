@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function Timer(){
+function Timer({ addSession }){
     const [running, setRunning] = useState(false);
     const [seconds, setSeconds] = useState(0);
     
@@ -14,7 +14,6 @@ function Timer(){
         const sessionDuration = seconds;
         setSeconds(0);
         addSession(sessionDuration); //Sends the duration to app (updates the sessions array)
-        
     };
 
     
@@ -31,7 +30,7 @@ function Timer(){
                                               //this prevents multiple intervals from stacking
     }, [running])
 
-
+    //format time for display
     const hours = Math.floor(seconds/3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const sec = seconds % 60;
@@ -44,6 +43,8 @@ function Timer(){
     return (
         <section className="timer">
             <div className="clock" >{timeString}</div>
+
+            {/*show buttons depending on running*/}
             { !running && <button className="start-button" onClick={startSession} >Start Session</button>}
             { running && <button className="end-button" onClick={endSession} disabled={!running}>End Session</button>} 
         </section>
