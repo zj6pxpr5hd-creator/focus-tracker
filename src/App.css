@@ -122,6 +122,27 @@ body {
   cursor: pointer;
 }
 
+.subject-input {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  width: 60%;
+  border: 1px solid #666;
+  border-radius: 5px;
+  color: var(--text-color);
+  background-color: transparent;
+}
+
+.save-button{
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 /*===================
     SESSION LOG
 =====================*/

@@ -7,13 +7,13 @@ import { useEffect, useState } from 'react'
 
 function App() {
 
-  const [sessions, setSessions]  = useState(()  => { //array that saves Sessions time 
+  const [sessions, setSessions]  = useState(()  => { //array that saves Sessions data 
     const saved = localStorage.getItem("sessions");  //checks if there are sessions saved
     return  saved ? JSON.parse(saved) : [];          //if there are it stores them in session if there aren't sessions is set to empty
   }); //sessions saved locally are stored inside the saved variable as JSON and than parsed to be saved in the sessions array
 
-  const addSession = (time) =>  {               //function that updates the sessions array; this is just a tool to update sessions safely
-    setSessions (prev => [...prev, time]);      //this function will be passed to timer that will use it to update the sessions array
+  const addSession = (session) =>  {               //function that updates the sessions array; this is just a tool to update sessions safely
+    setSessions (prev => [...prev, session]);      //this function will be passed to timer that will use it to update the sessions array
   };
 
   const clearSessions = () => {
