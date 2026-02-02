@@ -111,15 +111,21 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
+.start-button:hover{
+  background-color: #4A7856;
+}
 
 .end-button {
   padding: 1rem 2rem;
   font-size: 1.5rem;
-  background-color: #c41a1a;
+  background-color: #EF233C;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.end-button:hover{
+  background-color: #BD1E1E;
 }
 
 .subject-input {
@@ -134,15 +140,36 @@ body {
 }
 
 .save-button{
+  margin: 0 1rem 0 1rem;
   padding: 1rem 2rem;
   font-size: 1.5rem;
-  background-color: #007bff;
+  background-color: #648DE5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 140px;
+}
+
+.save-button:hover{
+  background-color: #304C89;
+}
+
+.delete-button{
+  width: 140px;
+  margin: 0 1rem 0 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background-color: #EF233C;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
+.delete-button:hover{
+  background-color: #BD1E1E;
+}
 /*===================
     SESSION LOG
 =====================*/

@@ -48,13 +48,18 @@ function Timer({ addSession }){
     const saveSession  = () =>{ //when session's subject gets saved 
         addSession({
             duration: savedDuration, 
-            subject:  subject
+            subject:  subject!=="" ? subject : "Untitled"
         });   //adds session to sessions array (in App)
         setSubject("");         //resets subject
         setSavedDuration(0);       //resets duration
         setAwaitingSubject(false);  //brings back timer and start timer button
     }
-    
+    const deleteSession = () => {
+        setSubject("");         //resets subject
+        setSavedDuration(0);       //resets duration
+        setAwaitingSubject(false);  //brings back timer and start timer button
+    }
+
     useEffect(() => {
         let interval;  //save interval inside a variable that lives inside useEffect
 
@@ -89,7 +94,10 @@ function Timer({ addSession }){
             {running 
             ? (<button className="end-button" onClick={endSession} disabled={!running}>End Session</button>)
             : (awaitingSubject  
-                ? (<button className="save-button"  onClick={saveSession}  disabled={subject.trim() === ""}>Save</button>) 
+                ?   (<>
+                        <button className="save-button"  onClick={saveSession}>Save</button>
+                        <button className="delete-button"  onClick={deleteSession}>Delete</button>
+                    </>) 
                 :  (<button className="start-button" onClick={startSession} >Start Session</button>)) 
             }
         </section>
