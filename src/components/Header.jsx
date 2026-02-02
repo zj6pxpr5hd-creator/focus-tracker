@@ -1,7 +1,8 @@
 function  Header() {
   return (
-    <header>
+    <header className="header">
       <h1>Focus Tracker</h1>
+        <p className="subtitle">Observation Beats Control</p>
     </header>
   );
 }   
