@@ -7,7 +7,7 @@ function SessionLog({ sessions }) {
       {/*Session List*/}
       <ul>
 
-        {sessions.slice().reverse().map((time, index) =>  { //maps over the array in revers order to show latest session on top
+        {sessions.length!==0  ? (sessions.slice().reverse().map((time, index) =>  { //maps over the array in revers order to show latest session on top
           
           //format time for display
           const hours = Math.floor(time/3600);
@@ -26,7 +26,7 @@ function SessionLog({ sessions }) {
             Session {sessionNumber}: {timeString}
           </li>
           );
-        })}
+        }))  : (<p>No sessions</p>)}
 
       </ul>
     </div>
