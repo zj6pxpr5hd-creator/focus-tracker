@@ -1,5 +1,6 @@
 import { use, useEffect } from "react";
 import { useState } from "react";
+import { formatTime } from "../utils/formatTime";
 
 function Timer({ addSession }){
     const [running, setRunning] = useState(false);
@@ -67,15 +68,7 @@ function Timer({ addSession }){
                                               //this prevents multiple intervals from stacking
     }, [running])
 
-    //format time for display
-    const hours = Math.floor(seconds/3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const sec = seconds % 60;
-
-    const hoursDisplay = String(hours).padStart(2, "0");
-    const minutesDisplay = String(minutes).padStart(2, "0");
-    const secondsDisplay = String(sec).padStart(2, "0");
-    const timeString = `${hoursDisplay}:${minutesDisplay}:${secondsDisplay}`;
+    const timeString = formatTime(seconds);
 
     return (
         <section className="timer">

@@ -1,3 +1,4 @@
+import { formatTime } from "../utils/formatTime";
 
 
 function SessionLog({ sessions, clearSessions}) {
@@ -23,13 +24,7 @@ function SessionLog({ sessions, clearSessions}) {
           const time = session.duration;
           const subject = session.subject;
           //format time for display
-          const hours = Math.floor(time/3600);
-          const minutes = Math.floor((time % 3600) / 60);
-          const sec = time % 60;
-          const hoursDisplay = String(hours).padStart(2, "0");
-          const minutesDisplay = String(minutes).padStart(2, "0");
-          const secondsDisplay = String(sec).padStart(2, "0");
-          const timeString = `${hoursDisplay}:${minutesDisplay}:${secondsDisplay}`;
+          const timeString = formatTime(time);
           
           //calculate latest session number based on sessions array lenght
           const sessionNumber = sessions.length - index;
