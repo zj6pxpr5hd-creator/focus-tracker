@@ -31,8 +31,7 @@ function App() {
       <div className="app-container">
         <Header />
         <Timer addSession={addSession}/> {/*App lends addSessions to Timer so that it can add sessions to the array*/}
-        <button className="clear-button" onClick={clearSessions}>Clear all</button>
-        <SessionLog sessions={sessions}/>
+        <SessionLog sessions={sessions} clearSessions={clearSessions}/>
       </div>
     </>
   )
